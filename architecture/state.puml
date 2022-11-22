@@ -8,9 +8,11 @@ state LoginService{
   LoginPrompt : Request credentials
   [*] --> LoginPrompt 
   LoginPrompt --> LoginSuccessful
+  LoginPrompt --> LoginFailed
 }
 
-  LoginSuccessful -> LoggedIn
+  LoginSuccessful --> LoggedIn
+  LoginFailed --> [*] : back to app with error message
 
 LoggedIn -> [*] : proceed to app
 
